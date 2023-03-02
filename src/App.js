@@ -9,9 +9,28 @@ const geometry = new THREE.BoxGeometry(100, 100, 100);
 const material = new THREE.MeshLambertMaterial({
   color: 0x0000ff,
 });
-
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
+
+// 球半径，水平、竖直细分精度
+const box = new THREE.SphereGeometry(60, 40, 40);
+const boxMaterial = new THREE.MeshLambertMaterial({
+  color: 0xe3edfa,
+});
+const boxMesh = new THREE.Mesh(box, boxMaterial);
+// 沿y轴正向平移120
+boxMesh.translateY(120);
+scene.add(boxMesh);
+
+// 圆柱网格模型
+var geometry3 = new THREE.CylinderGeometry(50, 50, 100, 25);
+var material3 = new THREE.MeshLambertMaterial({
+  color: 0xffff00,
+});
+var mesh3 = new THREE.Mesh(geometry3, material3); //网格模型对象Mesh
+// mesh3.translateX(120); //球体网格模型沿Y轴正方向平移120
+mesh3.position.set(120, 0, 0); //设置mesh3模型对象的xyz坐标为120,0,0
+scene.add(mesh3); //
 
 const point = new THREE.PointLight(0xffffff);
 point.position.set(400, 200, 300);
@@ -19,6 +38,10 @@ scene.add(point);
 
 const ambient = new THREE.AmbientLight(0x444444);
 scene.add(ambient);
+
+// 创建辅助坐标系, 250是坐标系最大刻度
+const axesHelper = new THREE.AxesHelper(250);
+scene.add(axesHelper);
 
 const width = window.innerWidth;
 const height = window.innerHeight;
