@@ -8,6 +8,8 @@ const scene = new THREE.Scene();
 const geometry = new THREE.BoxGeometry(100, 100, 100);
 const material = new THREE.MeshLambertMaterial({
   color: 0x0000ff,
+  opacity: 0.6,
+  transparent: true,
 });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
@@ -24,8 +26,10 @@ scene.add(boxMesh);
 
 // 圆柱网格模型
 var geometry3 = new THREE.CylinderGeometry(50, 50, 100, 25);
-var material3 = new THREE.MeshLambertMaterial({
+var material3 = new THREE.MeshPhongMaterial({
   color: 0xffff00,
+  specular: 0x4488ee,
+  shininess: 12,
 });
 var mesh3 = new THREE.Mesh(geometry3, material3); //网格模型对象Mesh
 // mesh3.translateX(120); //球体网格模型沿Y轴正方向平移120
